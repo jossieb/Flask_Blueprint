@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<header class="alert alert-primary border text-center" role="alert">
+  {{ message }}
+</header>
+{% endif %}
+{% endwith %}
+
+{% block main %}
+<!-- start main -->
+ 
+  <div class="w3-container w3-card w3-white w3-margin-bottom">
+    <h1 class="w3-text-dark-grey w3-padding-16"> <i class="fa fa-home fa-fw w3-margin-right w3-xxlarge w3-text-dark-grey"></i>
+      Index page </h1>
+    <p lang="nl"> 
+      Text
+    </p>
+  </div>
+
+<!-- einde main -->
+{% endblock %}

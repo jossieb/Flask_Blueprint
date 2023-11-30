@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Public page
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<header class="alert alert-primary border text-center" role="alert">
+  {{ message }}
+</header>
+{% endif %}
+{% endwith %}
+
+{% block main %}
+<!-- start main -->
+
+<div class="w3-container w3-card w3-white w3-margin-bottom" style ="background-image:url(static/bckgr.jpg)";>
+	<h1 class="w3-text-dark-grey w3-padding-16">
+		<i class="fa fa-folder-open-o fa-fw w3-margin-right w3-xxlarge w3-text-dark-grey"></i>Public page
+	</h1>
+	<p>
+	<h5><b>Header 5</b></h5>
+	</p>
+	<p>
+	Text
+	</p>
+
+</div>
+
+<!-- einde main -->
+{% endblock %}

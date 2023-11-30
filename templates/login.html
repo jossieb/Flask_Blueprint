@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<header class="alert alert-primary border text-center" role="alert">
+  {{ message }}
+</header>
+{% endif %}
+{% endwith %}
+
+{% block main %}
+<!-- start main -->
+
+    <form id="loginForm" action="/blue_login" method="post" autocomplete="off">
+		<p>Log in to see secured pages.</p>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Visitor" type="text" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" required>
+        </div>
+        <!-- <button class="btn btn-primary" type="submit">Login</button> -->
+		<input type="submit" value="Login"/>
+		<p class="w3-small">Ask site owner for credentials.</p>
+    </form>
+
+<!-- einde main -->
+{% endblock %}
