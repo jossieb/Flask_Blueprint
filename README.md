@@ -11,5 +11,11 @@ Kickstart a new Flask project
 **4. Activate the virtual environment**
 >       venv\Scripts\activate
 **5. Start the Flask app in the virtual environment**
->       flask run --host=0.0.0.0 
-*(can be reached throughout the home network)*
+>       flask run 
+*(can be reached at http://127.0.0.1:5000/)*
+
+**6. App runs with screens below**
+![screens](static/images.JPG)   
+
+**7. Visitor/Password for secured page**
+>       initially set to: TEST / T3st!

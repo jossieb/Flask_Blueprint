@@ -1,0 +1,34 @@
+#loginForm {
+  background: #f7f7f7;
+  padding: 10px;
+  max-width: 500px;
+}
+#loginForm * {
+  box-sizing: border-box;
+}
+#logintForm input, #contactForm label, #contactForm textarea {
+  display: block;
+  width: 100%;
+}
+#loginForm input {
+  padding: 5px;
+}
+#logintForm label {
+  padding: 5px 0;
+}
+#loginForm input[type="submit"] {
+  margin-top: 10px;
+  border: 1;
+  color: #fff;
+  background: #16537e;
+  cursor: pointer;
+}
+
+#loginForm input[type="button"] {
+  margin-top: 10px;
+  border: 1;
+  color: #fff;
+  background: #16537e;
+  cursor: pointer;
+}
+#loginForm input[type="submit"]:disabled { background: #424242; }
