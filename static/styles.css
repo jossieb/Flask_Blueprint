@@ -1,3 +1,11 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 3px;
+}
+
 #loginForm {
   background: #f7f7f7;
   padding: 10px;
@@ -6,7 +14,7 @@
 #loginForm * {
   box-sizing: border-box;
 }
-#logintForm input, #loginForm label, #loginForm textarea {
+#loginForm input, #loginForm label, #loginForm textarea {
   display: block;
   width: 100%;
 }

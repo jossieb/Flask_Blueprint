@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Database usage
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<header class="alert alert-primary border text-center" role="alert">
+  {{ message }}
+</header>
+{% endif %}
+{% endwith %}
+
+{% block main %}
+<!-- start main -->
+
+<div class="w3-container w3-card w3-white w3-margin-bottom" style ="background-image:url(static/bckgr.jpg)";>
+	<h1 class="w3-text-dark-grey w3-padding-16">
+		<i class="fa fa-database fa-fw w3-margin-right w3-xxlarge w3-text-dark-grey"></i>Database usage
+	</h1>
+	<p>
+	<h5><b>Table filled with data from a database file <i>comments</i></b></h5>
+	</p>
+  <div class="w3-container w3-card w3-white w3-margin-bottom">
+    <div style="overflow-x:auto;">
+      <p>
+        <table>
+            <tr>
+            <th style="color: white; background: #16537e; text-align: left">When</th>
+            <th style="color: white; background: #16537e; text-align: left">Who</th>
+            <th style="color: white; background: #16537e; text-align: left">Comment</th>
+            </tr>
+            {% for row in comments %}
+            <tr>
+            <td style="text-align: left" >{{row[1]}} {{row[2]}}</td>
+            <td style="text-align: left" >{{row[3]}}</td>
+            <td style="text-align: left" >{{row[4]}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+      </p>
+        </div>
+      </div>
+
+   <!-- (B) REGISTRATION FORM -->
+   <div class="w3-container w3-card w3-white w3-margin-bottom">
+    <form id="loginForm" action="/blue_comment" method="post" autocomplete="off">  
+        <label for="name">Name</label>
+        <textarea id="name" name="name" rows="1" cols="33" maxlength="100" placeholder="Name here"></textarea><br>
+        <label for="comment">Comment</label>
+        <textarea id="comment" name="comment" rows="3" cols="33" maxlength="100" placeholder="Comment here"></textarea><br>
+    <input type="submit" value="Send"/>
+    </form>
+  </div>
+
+</div>
+
+<!-- einde main -->
+{% endblock %}

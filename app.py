@@ -46,6 +46,9 @@ print("Opened database successfully")
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_COOKIE_SECURE"]=True
+app.config["SESSION_COOKIE_HTTPONLY"]=True
+
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
@@ -115,6 +118,46 @@ def blue_login():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("login.html")
+
+############################################################################################
+
+@app.route("/blue_comment", methods=["GET", "POST"])
+def blue_comment():
+    
+    """comment entry"""
+    # get the page used
+    rule = str(request.url_rule)
+    session["last_page"] = rule
+    # get method used
+    mymethod = request.method
+
+    if mymethod == "POST":
+        # POST -> Handle form
+        # generate timestamp
+        mydttm = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        myname = str(request.form.get("name"))
+        mycomment = str(request.form.get("comment"))
+        con.execute("insert into comments (dttm, name, comment) values (?, ?, ?)",
+                    (mydttm, myname, mycomment))
+
+        resp = redirect('/blue_updated')
+        con.commit()
+        return resp
+    else:
+        # GET -> Show comments
+
+        comments = con.execute(
+            "SELECT recnr, substr(dttm, 0, 11) mydate, substr(dttm, 12, 8) mytime,  name, comment FROM comments order by dttm desc"
+            )
+        
+        con.commit()
+
+        return render_template("comment.html",comments=comments)
+    
+    
+@app.route('/blue_updated')
+def blue_updated():    
+    return render_template('updated.html')
 ############################################################################################
 
 def errorhandler(mye):
